@@ -1,0 +1,4 @@
+
+document.querySelector('#root > div.q-box > div > div.q-flex.qu-alignItems--center.qu-justifyContent--center.qu-overflow--hidden.qu-zIndex--blocking_wall > div > div.q-box.qu-p--large.qu-pt--huge.qu-bg--gray_ultralight.qu-borderRadius--medium.qu-boxShadow--small').style.display = 'none'
+document.querySelector('#root > div.q-box > div > div.q-flex.qu-alignItems--center.qu-justifyContent--center.qu-overflow--hidden.qu-zIndex--blocking_wall').style.backgroundColor = ''
+document.querySelector('#root > div.q-box > div > div.q-box.qu-overflow--hidden').style.filter='blur(0px)'

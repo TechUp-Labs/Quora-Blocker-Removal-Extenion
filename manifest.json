@@ -1,0 +1,13 @@
+
+
+{
+    "manifest_version": 2,
+    "name": "Quora Paywall Remover",
+    "version": "1.0",
+    "permissions": [
+        "<all_urls>","webRequest","webRequestBlocking"
+    ],
+    "background": {
+        "scripts": ["background.js","query-string.js"]
+    }
+}
