@@ -1,21 +1,25 @@
-chrome.webRequest.onBeforeRequest.addListener(function (details) {
-	
-	var parts = details.url.split('?');
-	var query = queryString.parse(parts[1]);
-
-	query.share = 'techuplabs';
-
-	return {
-		redirectUrl: parts[0] + '?' + queryString.stringify(query)
-	};
-}, {
-	urls: [
-		'*://quora.com/*',
-		'*://www.quora.com/*'
-	],
-	types: [
-		'main_frame'
-	]
-}, [
-	'blocking'
-]);
+chrome.webRequest.onBeforeRequest.addListener(
+    function (details) {
+        try {
+            const [baseUrl, queryStringPart] = details.url.split('?');
+            if (!queryStringPart) {
+                return { redirectUrl: details.url };
+            }
+            const query = queryString.parse(queryStringPart);
+            query.share = 'techuplabs';
+            const newUrl = `${baseUrl}?${queryString.stringify(query)}`;
+            return { redirectUrl: newUrl };
+        } catch (error) {
+            console.error('Error processing URL:', error);
+            return { cancel: false };
+        }
+    },
+    {
+        urls: [
+            '*://quora.com/*',
+            '*://www.quora.com/*'
+        ],
+        types: ['main_frame']
+    },
+    ['blocking']
+);
